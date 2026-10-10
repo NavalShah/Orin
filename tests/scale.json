@@ -1,0 +1,158 @@
+{
+  "file": "/private/tmp/claude-502/-Users-Shared-Code-Hackathons-Orin/8dd87e9a-c96c-431e-811f-8bbba1e824ac/scratchpad/scale.wav",
+  "backend": "cqt",
+  "sample_rate": 22050,
+  "duration_s": 7.5,
+  "tuning_semitones": 0.01,
+  "tempo": {
+    "bpm": 120.2,
+    "confidence": 1.0,
+    "alternatives": {
+      "half": 60.1,
+      "double": 240.4
+    },
+    "beat_times": [
+      0.534,
+      1.022,
+      1.533,
+      2.02,
+      2.531,
+      3.019,
+      3.529,
+      4.017,
+      4.528,
+      5.016,
+      5.526,
+      6.014,
+      6.525
+    ]
+  },
+  "key": {
+    "tonic": "C",
+    "mode": "major",
+    "correlation": 0.866,
+    "margin": 0.101
+  },
+  "notes": [
+    {
+      "onset": 0.0,
+      "offset": 0.511,
+      "midi": 60,
+      "pitch_class": "C",
+      "octave": 4,
+      "velocity": 125
+    },
+    {
+      "onset": 0.511,
+      "offset": 0.998,
+      "midi": 62,
+      "pitch_class": "D",
+      "octave": 4,
+      "velocity": 125
+    },
+    {
+      "onset": 1.022,
+      "offset": 1.509,
+      "midi": 64,
+      "pitch_class": "E",
+      "octave": 4,
+      "velocity": 124
+    },
+    {
+      "onset": 1.509,
+      "offset": 2.02,
+      "midi": 65,
+      "pitch_class": "F",
+      "octave": 4,
+      "velocity": 122
+    },
+    {
+      "onset": 1.997,
+      "offset": 2.508,
+      "midi": 67,
+      "pitch_class": "G",
+      "octave": 4,
+      "velocity": 121
+    },
+    {
+      "onset": 2.508,
+      "offset": 3.019,
+      "midi": 69,
+      "pitch_class": "A",
+      "octave": 4,
+      "velocity": 119
+    },
+    {
+      "onset": 3.019,
+      "offset": 3.506,
+      "midi": 71,
+      "pitch_class": "B",
+      "octave": 4,
+      "velocity": 119
+    },
+    {
+      "onset": 3.506,
+      "offset": 4.017,
+      "midi": 72,
+      "pitch_class": "C",
+      "octave": 5,
+      "velocity": 117
+    },
+    {
+      "onset": 4.017,
+      "offset": 4.505,
+      "midi": 71,
+      "pitch_class": "B",
+      "octave": 4,
+      "velocity": 119
+    },
+    {
+      "onset": 4.505,
+      "offset": 5.016,
+      "midi": 69,
+      "pitch_class": "A",
+      "octave": 4,
+      "velocity": 119
+    },
+    {
+      "onset": 5.016,
+      "offset": 5.503,
+      "midi": 67,
+      "pitch_class": "G",
+      "octave": 4,
+      "velocity": 122
+    },
+    {
+      "onset": 5.526,
+      "offset": 6.014,
+      "midi": 65,
+      "pitch_class": "F",
+      "octave": 4,
+      "velocity": 123
+    },
+    {
+      "onset": 6.014,
+      "offset": 6.502,
+      "midi": 64,
+      "pitch_class": "E",
+      "octave": 4,
+      "velocity": 123
+    },
+    {
+      "onset": 6.525,
+      "offset": 7.012,
+      "midi": 62,
+      "pitch_class": "D",
+      "octave": 4,
+      "velocity": 125
+    },
+    {
+      "onset": 7.012,
+      "offset": 7.523,
+      "midi": 60,
+      "pitch_class": "C",
+      "octave": 4,
+      "velocity": 125
+    }
+  ]
+}
