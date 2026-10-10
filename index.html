@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f6f2" />
+  <title>Raga to Keys — a musical bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Raga to Keys home"><span class="brand-mark">r<span>↗</span></span><span>raga<span class="brand-light">to</span>keys</span></a>
+      <div class="side-label">YOUR WORKSPACE</div>
+      <button class="side-link active"><span class="side-icon">◉</span> Studio</button>
+      <button class="side-link" id="learn-nav"><span class="side-icon">▤</span> Learn the sounds <span class="new-tag">NEW</span></button>
+      <div class="side-label recent-label">RECENT SKETCHES <button title="Add a sketch">＋</button></div>
+      <button class="recent-item"><span class="recent-dot dot-saffron"></span> Morning phrase <small>2 min ago</small></button>
+      <button class="recent-item"><span class="recent-dot dot-lilac"></span> Untitled sketch <small>Yesterday</small></button>
+      <div class="sidebar-bottom"><div class="help-icon">?</div><div><strong>A space to explore</strong><p>Every tradition has something to teach us.</p></div><span>↗</span></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumbs">Studio <span>/</span> <strong>New sketch</strong></div><div class="top-actions"><span class="save-state"><i></i> All changes saved</span><button class="avatar" aria-label="Profile">A</button></div></header>
+      <div class="content">
+        <section class="intro"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR MUSICAL BRIDGE</div><h1>One melody.<br /><em>Two ways to hear it.</em></h1><p class="intro-copy">Explore a Carnatic phrase, shape it into a piano sketch, and learn what makes each tradition distinct.</p></div><div class="intro-art" aria-hidden="true"><div class="art-ring ring-one"></div><div class="art-ring ring-two"></div><div class="art-note note-a">♪</div><div class="art-note note-b">♫</div><div class="art-center">सा<br /><span>SA</span></div><div class="art-caption">LISTEN · EXPLORE · PLAY</div></div></section>
+
+        <section class="workspace-card">
+          <div class="card-heading"><div><div class="section-kicker">01 <span>·</span> START WITH A PHRASE</div><h2>Your source melody</h2></div><button class="text-button" id="reset-btn">↺ <span>Reset example</span></button></div>
+          <div class="source-row"><div class="source-badge"><span class="source-symbol">ச</span><span><strong>Carnatic</strong><small>South Indian classical</small></span></div><div class="source-description"><span class="music-chip">Raga-inspired phrase</span><span class="music-chip">8 notes</span><span class="music-chip">Adi tala feel</span><button class="info-button" title="This is a learning sketch, not a full transcription">i</button></div><button class="listen-button" id="play-source"><span>▶</span> Listen</button></div>
+          <div class="phrase-label"><span>MELODY SKETCH</span><span class="edit-hint">Click a note to change its pitch · click + to add a note</span></div>
+          <div class="notation-wrap"><div class="staff"><div class="staff-lines"><i></i><i></i><i></i><i></i><i></i></div><div class="treble">𝄞</div><div class="notes" id="source-notes"></div><button id="add-note" class="add-note" title="Add a note">+</button><div class="beat-markers"><span>1</span><span>2</span><span>3</span><span>4</span></div></div></div>
+          <div class="notation-foot"><span><i class="legend-dot"></i> Sargam syllables <span class="foot-divider">·</span> approximate pitch mapping</span><button class="subtle-button" id="edit-toggle">✎ <span>Edit melody</span></button></div>
+
+          <div class="conversion-divider"><span></span><div class="convert-icon">↓</div><span></span></div>
+          <div class="card-heading target-heading"><div><div class="section-kicker">02 <span>·</span> FIND YOUR WAY INTO IT</div><h2>Make it playable on piano</h2></div><div class="key-select"><span>KEY</span><select id="key-select" aria-label="Choose piano key"><option value="C">C major</option><option value="D">D major</option><option value="G">G major</option><option value="A">A minor</option></select></div></div>
+          <div class="piano-panel"><div class="piano-topline"><div><span class="piano-label">PIANO SKETCH</span><span class="piano-subtitle">A simple starting point for your instrument</span></div><div class="play-controls"><button class="play-button" id="play-piano"><span>▶</span> Play sketch</button><button class="icon-button" id="stop-piano" title="Stop playback">■</button></div></div><div class="piano-roll" id="piano-roll"></div><div class="keyboard" id="keyboard" aria-label="Playable piano keyboard"></div><div class="piano-foot"><span><i class="legend-dot piano-dot"></i> Select a note above to hear it on piano</span><button class="subtle-button" id="download-btn">↓ <span>Save sketch</span></button></div></div>
+        </section>
+
+        <section class="learn-card" id="learn-card"><div class="learn-icon">✳</div><div class="learn-copy"><div class="section-kicker">A LITTLE CONTEXT</div><h3>What travels with the melody?</h3><p>We keep the shape and movement of the phrase as we map it to piano. The original ornaments and expressive pitch bends are part of the Carnatic performance; this first sketch simplifies them so you can find the notes on a keyboard.</p><button id="more-learn" class="learn-link">Explore the musical ideas <span>↗</span></button></div><div class="learn-side"><div class="learn-stat"><span>SOURCE</span><strong>Voice / instrument</strong></div><div class="learn-stat"><span>ARRANGED FOR</span><strong>Western piano</strong></div><div class="learn-stat"><span>WHAT CHANGES</span><strong>Ornaments simplified</strong></div></div></section>
+        <footer>Made for curious ears <span>·</span> Music is a conversation across traditions.</footer>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modal" aria-hidden="true"><div class="modal"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div class="section-kicker">MUSICAL IDEAS</div><h2>Hear the shape, then the details.</h2><p>This sketch maps a short sargam-style phrase onto nearby piano notes. It keeps the up-and-down contour so a pianist can explore the melody, while simplifying features that need a more nuanced notation.</p><div class="idea-grid"><div><span>01</span><strong>Pitch movement</strong><p>Follow the phrase as it rises and settles.</p></div><div><span>02</span><strong>Rhythmic feel</strong><p>Notice the repeating pulse underneath the melody.</p></div><div><span>03</span><strong>Ornamentation</strong><p>Small slides and turns give a performance its voice.</p></div></div><p class="modal-note">This is an educational sketch, not a definitive transcription. A musician’s interpretation brings details that a piano roll cannot capture.</p></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
