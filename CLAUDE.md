@@ -4,17 +4,19 @@ Read [AGENTS.md](AGENTS.md) first. It has the layout, commands, and rules for th
 
 ## Context
 
-- The repo has two parts: a Next.js sketch app and a Python audio pipeline (`pipeline/`).
-- The app is a learning sketch. The README is explicit that it does not analyze recordings. Don't wire the pipeline into the app unless asked.
-- Musical scope: the pipeline is a Western-profile baseline. Carnatic work (Sa, raga, gamakas) needs design with a musician, so flag it rather than guessing.
+- Orin converts music between traditions through a neutral intermediate representation (IR) and reports what was lost. The spec is [requirements.txt](requirements.txt); its section numbers are used throughout the code.
+- Three layers: `orin/` (core library), `server/` (FastAPI), and the Next.js app under `app/(orin)/`.
+- `pipeline/` and `app/page.jsx` are the original prototype. Keep them working and don't restructure them unless asked.
+- Tradition data (Carnatic, Arabic, Persian) is unreviewed. Flag anything musically uncertain instead of guessing, and put the doubt in the data (`caveats`, `confidence`) so the UI shows it.
 
 ## Working style
 
 - Keep answers short. Show code only where it changes.
-- For pipeline changes, run `pytest tests/` before reporting done. Report the actual result.
+- Run the tests for what you changed before reporting done, and report the actual result: `pytest tests/` for Python, `npm run test` for the app.
 - The Python venv is outside the repo. If you need one, create it in the session scratchpad, not in the repo.
-- Don't create files in `tests/` beyond tests and small fixtures.
+- Don't create files in `tests/` beyond tests and small fixtures. Signal generators live in `orin/eval/synth.py`.
 - Don't open the browser or start the dev server unless asked.
+- Never read or print `.env`.
 
 ## Git
 

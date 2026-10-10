@@ -1,0 +1,8 @@
+# An E minor pentatonic riff (E G A B D).
+tonic: E2
+tempo: 110
+meter: 4/4
+units_per_beat: 2
+
+E2:2 G2 A2 B2:2 A2 G2 | E2 G2 A2 B2 D3:2 B2 A2 |
+G2 A2/ B2 A2 G2 E2:2 D2 | E2:6 r:2 ||

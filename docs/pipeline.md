@@ -1,5 +1,7 @@
 # Audio Pipeline
 
+> This page documents the original Western-baseline analysis in `pipeline/`. The full Orin pipeline (cents, contours, ornaments, tonic, style-aware segmentation) lives in `orin/` and is described in [architecture.md](architecture.md) and [ir.md](ir.md). `orin/` reuses `estimate_tempo` and `estimate_key` from here.
+
 The pipeline turns an audio file into tempo, a list of notes (with pitch class and octave), and a key/tonic estimate. It lives in `pipeline/`.
 
 ## At a glance

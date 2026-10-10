@@ -1,0 +1,11 @@
+# A short phrase in Mohanam, Adi tala.
+# An illustration written by Orin's authors. It has not been reviewed by a musician.
+tonic: D3
+raga: mohanam
+tala: adi
+tempo: 80
+units_per_beat: 2
+
+S R2 G3 P D2 S' , , | D2 P G3 R2 | S , , , ||
+G3~ , P , D2 P G3 R2 | S R2 G3/ P | D2 , P , ||
+S' , D2 P G3 R2 S , | R2 G3 R2 S | D2. S , , ||

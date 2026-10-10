@@ -1,0 +1,237 @@
+/* Chat (spec 10.11): conversations on the left, messages and the composer on the right.
+   The message list scrolls inside the screen; on narrow screens everything stacks. */
+
+.chat {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.threads {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+}
+.threadList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid var(--o-line);
+  border-left: 4px solid transparent;
+  border-radius: 8px;
+}
+/* The open conversation has a bar and bold text, not only a tint. */
+.thread[data-active="true"] {
+  border-left-color: var(--o-accent);
+  background: var(--o-accent-pale);
+}
+.threadButton {
+  appearance: none;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--o-ink);
+  font: inherit;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.threadButton[aria-current="true"] {
+  font-weight: 700;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.messages {
+  flex: 1;
+  min-height: 160px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--o-line);
+  border-radius: var(--o-radius);
+  background: var(--o-surface);
+}
+.messageList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fromUser,
+.fromOrin {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(760px, 92%);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--o-line);
+}
+.fromUser {
+  align-self: flex-end;
+  background: var(--o-surface-2);
+}
+.fromOrin {
+  align-self: flex-start;
+  width: min(760px, 92%);
+  background: var(--o-surface);
+  border-left: 4px solid var(--o-accent);
+}
+.who {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--o-ink-2);
+}
+.text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.live {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- cards -------------------------------------------------------------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--o-ink-2);
+  border-radius: 10px;
+  background: var(--o-surface);
+}
+.cardTitle {
+  overflow-wrap: anywhere;
+}
+.cardLabel {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--o-ink-2);
+}
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chips li {
+  padding: 3px 10px;
+  border: 1px solid var(--o-line);
+  border-radius: 999px;
+  background: var(--o-surface-2);
+  font-size: 13px;
+}
+.chipKey {
+  font-weight: 700;
+}
+.chipKey::after {
+  content: ":";
+}
+.sections,
+.notes {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+.formGrid input,
+.formGrid select {
+  width: 100%;
+}
+.standin {
+  padding: 8px 10px;
+  border: 1px dashed var(--o-warn);
+  border-radius: 8px;
+  background: #fffaf0;
+}
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* --- composer ----------------------------------------------------------- */
+
+.composer {
+  gap: 8px;
+}
+.chip {
+  border-radius: 999px;
+}
+.chip[aria-pressed="true"]::before {
+  content: "✓ ";
+}
+.attach > summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--o-accent);
+}
+.attachments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.attachments li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 4px 3px 10px;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 820px) {
+  .chat {
+    display: flex;
+    flex-direction: column;
+  }
+  .threads {
+    max-height: 240px;
+  }
+  .messages {
+    flex: none;
+    min-height: 45vh;
+    max-height: 70vh;
+  }
+}

@@ -1,0 +1,662 @@
+/* Notation Studio (spec 11.2): top bar, then input | notation | loss, then downloads.
+   The three columns stack on narrow screens. State is never shown by colour alone. */
+
+.studio {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+}
+
+/* --- top bar ------------------------------------------------------------ */
+
+.topBar {
+  gap: 10px;
+}
+.topRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.selects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+.arrow {
+  margin-top: 28px;
+  font-size: 20px;
+  color: var(--o-ink-2);
+}
+.formatField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 240px;
+  min-width: 200px;
+  max-width: 440px;
+}
+.formatField select {
+  width: 100%;
+}
+.formatMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 13px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 21px;
+}
+.status {
+  min-height: 1.45em;
+  font-weight: 600;
+}
+
+/* --- layout ------------------------------------------------------------- */
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr) minmax(280px, 1.1fr);
+  gap: 14px;
+  align-items: start;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* --- shared bits -------------------------------------------------------- */
+
+.disclosure > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--o-accent);
+  padding: 4px 0;
+}
+.disclosure ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.plainList {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.segLeft {
+  border-radius: 8px 0 0 8px;
+}
+.segRight {
+  border-radius: 0 8px 8px 0;
+  margin-left: -1px;
+}
+.segLeft[aria-pressed="true"]::before,
+.segRight[aria-pressed="true"]::before {
+  content: "✓ ";
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* --- input -------------------------------------------------------------- */
+
+.drop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border: 2px dashed var(--o-ink-2);
+  border-radius: 10px;
+  background: var(--o-surface-2);
+}
+.drop input {
+  max-width: 100%;
+}
+.dropActive {
+  border-style: solid;
+  border-color: var(--o-accent);
+  background: var(--o-accent-pale);
+}
+.chosen {
+  padding: 10px;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.help {
+  margin: 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--o-surface-2);
+  white-space: pre-wrap;
+  font-family: var(--mono, "DM Mono"), ui-monospace, monospace;
+  font-size: 13px;
+}
+
+/* --- detection banner ---------------------------------------------------- */
+
+.detect {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--o-line);
+  border-left: 5px solid var(--o-info);
+  border-radius: 8px;
+  background: var(--o-surface);
+}
+.detectUnsure {
+  border-left: 8px double var(--o-warn);
+  background: #fffaf0;
+}
+
+/* --- what Orin heard ---------------------------------------------------- */
+
+.tonic {
+  gap: 8px;
+  padding: 12px;
+  border: 2px solid var(--o-ink);
+  border-radius: 10px;
+}
+.tonicValue strong {
+  margin-right: 8px;
+  font-family: var(--display, Manrope), system-ui, sans-serif;
+  font-size: 28px;
+}
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+}
+.fieldset legend {
+  padding: 0 4px;
+  font-weight: 700;
+}
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 150px;
+}
+.modeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.modeItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+}
+
+/* --- notation viewer ---------------------------------------------------- */
+
+.viewer {
+  min-width: 0;
+}
+.playback {
+  gap: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--o-surface-2);
+}
+.audio {
+  flex: 1;
+  min-width: 200px;
+  max-width: 100%;
+  height: 36px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border-bottom: 1px solid var(--o-line);
+}
+.tab {
+  appearance: none;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-radius: 8px 8px 0 0;
+  background: transparent;
+  color: var(--o-ink-2);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tab[aria-selected="true"] {
+  border-color: var(--o-line);
+  border-bottom: 3px solid var(--o-accent);
+  background: var(--o-surface-2);
+  color: var(--o-ink);
+}
+.tabPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.svgWrap {
+  max-height: 560px;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+}
+.svgPage {
+  min-width: 560px;
+}
+.svgPage svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Frames drawn around notes inside the staff (see NotationViewer.frame). */
+.svgWrap [data-orin-frame="low"] {
+  fill: none;
+  stroke: var(--o-warn);
+}
+.svgWrap text[data-orin-frame="low"] {
+  fill: var(--o-warn);
+  stroke: none;
+}
+.svgWrap [data-orin-frame="selected"] {
+  fill: none;
+  stroke: var(--o-focus);
+}
+.svgWrap [data-orin-frame="current"] {
+  fill: rgba(212, 123, 83, 0.28);
+  stroke: var(--o-accent);
+}
+/* Fallbacks when a frame could not be measured. */
+.svgWrap [data-orin-low="plain"] {
+  outline: 2px dashed var(--o-warn);
+  outline-offset: 2px;
+}
+.svgWrap [data-orin-selected="plain"] {
+  outline: 2px solid var(--o-focus);
+  outline-offset: 2px;
+}
+.svgWrap [data-orin-current="plain"] {
+  outline: 3px solid var(--o-accent);
+  outline-offset: 2px;
+}
+
+.textNotation {
+  max-height: 460px;
+  margin: 0;
+  padding: 20px 14px 14px;
+  overflow: auto;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+  background: var(--o-surface-2);
+  font-family: var(--mono, "DM Mono"), ui-monospace, monospace;
+  font-size: 16px;
+  line-height: 2.2;
+  white-space: pre;
+}
+.note {
+  position: relative;
+  padding: 2px 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.note:hover {
+  background: var(--o-accent-pale);
+}
+/* Unsure: dashed outline plus a "?" marker. */
+.noteLow {
+  outline: 2px dashed var(--o-warn);
+  outline-offset: 1px;
+}
+.lowMark {
+  position: absolute;
+  top: -1em;
+  right: -0.15em;
+  font-size: 0.7em;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--o-warn);
+  pointer-events: none;
+}
+/* Selected: a solid ring (a box-shadow, so it can sit with the dashed outline). */
+.noteSelected {
+  box-shadow: 0 0 0 3px var(--o-focus);
+}
+/* Sounding now: an inverted, filled box. */
+.noteCurrent,
+.noteCurrent:hover {
+  background: var(--o-ink);
+  color: #fff;
+}
+
+.legend {
+  gap: 8px;
+  font-size: 13px;
+}
+.legend ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.legendSwatch {
+  display: inline-block;
+  margin: 0 10px 0 2px;
+  padding: 0 4px;
+  font-family: var(--mono, "DM Mono"), ui-monospace, monospace;
+  cursor: default;
+}
+.describe {
+  white-space: pre-wrap;
+  font-size: 16px;
+}
+
+/* --- contour plot ------------------------------------------------------- */
+
+.plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+  background: var(--o-surface-2);
+}
+.plotGrid {
+  stroke: var(--o-line);
+  stroke-width: 1;
+}
+.plotOctave {
+  stroke: var(--o-ink-2);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.plotLabel {
+  fill: var(--o-ink-2);
+  font-family: var(--mono, "DM Mono"), ui-monospace, monospace;
+  font-size: 10px;
+}
+.plotContour {
+  fill: none;
+  stroke: var(--o-ink);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.plotNote {
+  fill: var(--o-accent-fill);
+  cursor: pointer;
+}
+.plotNoteSelected {
+  fill: var(--o-accent);
+  stroke: var(--o-ink);
+  stroke-width: 1.5;
+  cursor: pointer;
+}
+.plotMarker {
+  fill: var(--o-danger);
+}
+.plotKey {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--o-ink-2);
+}
+.plotKey span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* --- loss report -------------------------------------------------------- */
+
+.fidelity {
+  font-size: 17px;
+}
+.fidelity strong {
+  font-family: var(--display, Manrope), system-ui, sans-serif;
+  font-size: 28px;
+}
+.subScores {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+.subScores dt {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--o-ink-2);
+}
+.subScores dd {
+  margin: 0;
+}
+.subScores meter {
+  width: 100%;
+}
+.lossGroup {
+  padding: 6px 10px;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+}
+.lossGroup > summary {
+  padding: 4px 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+.lossList {
+  list-style: none;
+  margin: 6px 0 4px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lossItem {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--o-line);
+  border-left: 4px solid var(--o-ink-2);
+  border-radius: 8px;
+  background: var(--o-surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.lossItem:hover {
+  background: var(--o-surface-2);
+}
+.lossItem[aria-pressed="true"] {
+  border-color: var(--o-focus);
+  border-left-width: 9px;
+  background: var(--o-accent-pale);
+}
+.lossItem[aria-pressed="true"]::after {
+  content: "Selected: highlighted in the score";
+  font-size: 12px;
+  font-weight: 700;
+}
+.severity {
+  font-size: 12px;
+  font-weight: 700;
+}
+.severity[data-severity="major"] {
+  color: var(--o-danger);
+}
+.severity[data-severity="minor"] {
+  color: var(--o-warn);
+}
+.severity[data-severity="info"] {
+  color: var(--o-info);
+}
+.noticeList {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.explainText {
+  white-space: pre-wrap;
+}
+
+/* --- how was this made -------------------------------------------------- */
+
+.logPanel > summary h2 {
+  display: inline;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+.facts dt {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--o-ink-2);
+}
+.facts dd {
+  margin: 0;
+}
+.tableWrap {
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.table th,
+.table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--o-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+/* --- typed-notes problems ----------------------------------------------- */
+
+.echo {
+  margin: 0;
+  padding: 10px;
+  overflow: auto;
+  border: 1px solid var(--o-line);
+  border-radius: 8px;
+  background: var(--o-surface-2);
+  font-family: var(--mono, "DM Mono"), ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.echoLine {
+  display: block;
+  white-space: pre;
+}
+.lineNo {
+  display: inline-block;
+  width: 2.5em;
+  margin-right: 10px;
+  color: var(--o-ink-2);
+  text-align: right;
+  user-select: none;
+}
+.problemMark {
+  padding: 0 1px;
+  border-radius: 2px;
+  outline: 2px solid var(--o-danger);
+  background: #ffe1dd;
+  color: var(--o-ink);
+  text-decoration: underline wavy var(--o-danger);
+}
+.problemMark[data-severity="warning"] {
+  outline: 2px dashed var(--o-warn);
+  background: #fff3d6;
+  text-decoration-color: var(--o-warn);
+}
+
+/* --- narrow screens and print ------------------------------------------- */
+
+@media (max-width: 1320px) {
+  .columns {
+    grid-template-columns: minmax(260px, 1fr) minmax(0, 1.7fr);
+  }
+  .columns > .column:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .arrow {
+    display: none;
+  }
+  .actions {
+    margin-top: 0;
+  }
+}
+
+@media print {
+  .studio [data-noprint] {
+    display: none !important;
+  }
+  .columns {
+    display: block;
+  }
+  .viewer {
+    border: 0;
+    padding: 0;
+  }
+  .svgWrap,
+  .textNotation {
+    max-height: none;
+    overflow: visible;
+    border: 0;
+  }
+}

@@ -1,0 +1,9 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "live: calls the real Gemini / ElevenLabs APIs (needs keys; run with `pytest -m live`)",
+    "slow: needs the optional ML packages (torch, torchcrepe, demucs)",
+]
+# Live tests are opt-in. A later `-m` on the command line overrides this one.
+addopts = "-m 'not live'"

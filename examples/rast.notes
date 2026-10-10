@@ -1,0 +1,9 @@
+# A phrase in Rast on C. E and B are half-flat, written Ed and Bd.
+# An illustration written by Orin's authors. It has not been reviewed by a musician.
+tonic: C4
+mode: rast
+tempo: 90
+units_per_beat: 2
+
+C4 D4 Ed4 F4 G4:2 F4 Ed4 | D4 Ed4 F4 G4 A4 Bd4 C5:2 |
+Bd4 A4 G4 F4 Ed4:2~ D4 Ed4 | D4:2 C4:6 ||

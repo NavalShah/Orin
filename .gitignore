@@ -1,2 +1,27 @@
 node_modules/
 .next/
+next-env.d.ts
+*.tsbuildinfo
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# runtime data (uploads, cache, sqlite)
+data/
+out/
+
+# test output
+test-results/
+playwright-report/
+openapi.schemas.json
+
+# local tooling (machine-specific paths)
+.claude/launch.json

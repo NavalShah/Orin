@@ -1,0 +1,136 @@
+# Per-style analysis defaults (spec 13.8).
+#
+# These are engineering starting points, not measurements. A format picks a profile
+# with FormatMeta.analysis_profile. The UI's "sensitivity" control scales the plateau
+# thresholds (spec 7.9) instead of exposing these numbers.
+
+[pitch]
+sample_rate = 16000      # both trackers run on the 16 kHz copy
+hop_samples = 160        # exactly 10 ms, so tracker frames align
+median_frames = 3        # light spike removal that keeps glides
+bridge_gap_ms = 60       # unvoiced gaps shorter than this inside a note are bridged
+octave_repair_max_ms = 120
+octave_repair_window_cents = 60
+disagree_cents = 100     # trackers further apart than this are logged as a disagreement
+
+[pitch.presets]          # fmin, fmax in Hz, by voice type
+auto = [65.0, 1050.0]
+male = [65.0, 520.0]
+female = [130.0, 1050.0]
+instrument = [50.0, 2000.0]
+
+[ornaments]
+none_below_cents = 15          # half-extent under this is not an ornament
+oscillation_min_cents = 30
+vibrato_max_cents = 50
+vibrato_min_hz = 4.5
+vibrato_max_hz = 8.0
+vibrato_min_cycles = 3
+vibrato_min_regularity = 0.75  # 1 - CV of half-periods
+glide_min_cents = 80
+glide_min_ms = 80
+grace_min_ms = 20
+grace_max_ms = 80
+grace_min_cents = 50
+
+[tonic]
+histogram_bin_cents = 10
+histogram_smooth_cents = 15
+max_candidates = 8
+mode_kernel_cents = 25         # wide enough that the choice of ratio cannot pick the raga
+final_note_bonus = 0.18
+longest_note_bonus = 0.05
+drone_min_presence = 0.6       # share of frames a peak must persist in
+refine_min_stable_s = 0.3
+rotation_confidence_cap = 0.5
+
+[rhythm]
+tatum_min_ms = 80
+tatum_max_ms = 400
+free_time_fit_share = 0.6      # under this share of intervals fitting the tatum = free time
+free_time_fit_tolerance = 0.15
+free_time_min_onsets = 8
+swing_threshold = 1.4
+timing_shift_tolerance_ms = 35 # snaps larger than this are logged as TIMING_SHIFT
+cycle_confidence_cap = 0.6     # a melody alone cannot prove a tala or an iqa'
+
+[mode]
+out_of_mode_weight = 0.5
+unused_degree_weight = 0.3
+oscillating_note_weight = 0.5
+confidence_cap = 0.85
+short_clip_cap = 0.5           # under 15 s, or fewer than 5 pitch classes
+short_clip_s = 15
+
+[detect]
+min_confidence = 0.5           # under this, the UI says "Not sure - please choose"
+min_margin = 0.12
+min_duration_s = 10
+
+# --- segmentation profiles ---------------------------------------------------
+
+[profiles.neutral]             # first pass under auto-detect, before a style is known
+voicing_threshold = 0.45
+min_note_ms = 70
+plateau_enter_cents = 70
+plateau_exit_cents = 45
+osc_min_hz = 3.0
+osc_max_hz = 8.0
+max_merge_half_extent_cents = 150
+out_and_back_ms = 180
+mode_snap_cents = 35
+
+[profiles.western]
+voicing_threshold = 0.5
+min_note_ms = 80
+plateau_enter_cents = 60
+plateau_exit_cents = 40
+osc_min_hz = 4.5
+osc_max_hz = 8.0
+max_merge_half_extent_cents = 100
+out_and_back_ms = 120
+mode_snap_cents = 35
+
+[profiles.rock]
+voicing_threshold = 0.35
+min_note_ms = 70
+plateau_enter_cents = 60
+plateau_exit_cents = 40
+osc_min_hz = 4.0
+osc_max_hz = 8.0
+max_merge_half_extent_cents = 150
+out_and_back_ms = 150
+mode_snap_cents = 35
+
+[profiles.carnatic]
+voicing_threshold = 0.5
+min_note_ms = 60
+plateau_enter_cents = 80
+plateau_exit_cents = 50
+osc_min_hz = 2.5
+osc_max_hz = 8.0
+max_merge_half_extent_cents = 250
+out_and_back_ms = 300
+mode_snap_cents = 45
+
+[profiles.arabic]
+voicing_threshold = 0.4
+min_note_ms = 70
+plateau_enter_cents = 45
+plateau_exit_cents = 30
+osc_min_hz = 4.0
+osc_max_hz = 8.0
+max_merge_half_extent_cents = 120
+out_and_back_ms = 150
+mode_snap_cents = 30
+
+[profiles.persian]
+voicing_threshold = 0.4
+min_note_ms = 70
+plateau_enter_cents = 45
+plateau_exit_cents = 30
+osc_min_hz = 4.0
+osc_max_hz = 9.0
+max_merge_half_extent_cents = 120
+out_and_back_ms = 150
+mode_snap_cents = 30
