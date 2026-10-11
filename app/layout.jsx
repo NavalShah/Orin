@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Raga to Keys — a musical bridge",
-  description: "Explore a Carnatic-inspired melody as a piano sketch.",
+  title: "Orin",
+  description: "Convert music between traditions and see what each notation leaves out.",
 };
 
 export default function RootLayout({ children }) {

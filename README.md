@@ -75,7 +75,7 @@ uvicorn server.main:app --port 8000
 npm run dev
 ```
 
-Open http://localhost:3000/chat, /studio or /workspace. Pick any profile name: there are no passwords, and this is not real authentication.
+Open http://localhost:3000 for the home page, which explains the idea and links to the three parts (/chat, /studio, /workspace). Opening a part asks for a profile name: there are no passwords, and this is not real authentication.
 
 With no API keys, or with `ORIN_OFFLINE=1`, everything still runs on built-in stand-ins, and the UI says which parts are stand-ins.
 
@@ -111,7 +111,8 @@ pytest tests/              # offline tests; live API tests are skipped
 pytest tests/ -m live      # real Gemini and ElevenLabs calls; needs keys
 npm run test               # component and unit tests
 npm run build
-npx playwright test        # browser smoke tests; set ORIN_PYTHON to your environment's python
+npx playwright test        # browser smoke tests; set ORIN_PYTHON to your environment's python.
+                           # They skip if the API on port 8000 has live keys, so they never spend credits.
 ```
 
 ## Musical honesty
@@ -129,10 +130,7 @@ npx playwright test        # browser smoke tests; set ORIN_PYTHON to your enviro
 | `orin/` | Core library: audio or notes -> IR -> notation and loss report |
 | `server/` | FastAPI backend |
 | `app/(orin)/`, `components/`, `lib/` | The three screens |
-| `pipeline/`, `app/page.jsx` | The original prototype: a Western-baseline analysis and a piano-sketch page |
+| `app/page.tsx`, `components/home/` | The public home page |
+| `pipeline/` | The original prototype: a Western-baseline analysis that `orin/` builds on |
 | `tests/`, `e2e/` | pytest and Playwright |
 | `docs/` | [Architecture](docs/architecture.md), [the IR](docs/ir.md), [the loss report](docs/loss-report.md), [adding a format](docs/adding-a-format.md), [review checklist](docs/review-checklist.md) |
-
-## The original sketch
-
-The page at `/` is the first prototype, "Raga to Keys": a hard-coded Carnatic-inspired phrase you can play and nudge on a piano. It is a learning sketch, not a transcription, and it does not use the Orin pipeline.

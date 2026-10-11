@@ -89,7 +89,7 @@ describe("shell", () => {
       ["Notation Studio", "/studio", "page"],
       ["Workspace", "/workspace", null],
     ]);
-    expect(screen.getByRole("link", { name: "Back to the original sketch" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
     expect(screen.getByText("Asha")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sign out" })).toBeInTheDocument();
   });

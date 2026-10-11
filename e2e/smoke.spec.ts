@@ -14,7 +14,20 @@ const SARGAM = [
   "G3~ , P , D2 P G3 R2 | S R2 G3/ P | D2 , P , ||",
 ].join("\n");
 
+const API = process.env.ORIN_E2E_API ?? "http://127.0.0.1:8000";
+
+/**
+ * These tests must never spend real provider credits. If the API they would talk to has
+ * live keys loaded (for example a dev server you already had running), they skip.
+ */
+async function requireOfflineApi(page: Page) {
+  const health = await (await page.request.get(`${API}/api/v1/health`)).json();
+  const live = !(health.offline.llm && health.offline.music && health.offline.tts);
+  test.skip(live, "The running API has live keys. Stop it, or start it with ORIN_OFFLINE=1, and run again.");
+}
+
 async function signIn(page: Page, path: string) {
+  await requireOfflineApi(page);
   await page.goto(path);
   await page.getByLabel("Profile name").fill(`e2e-${Date.now()}-${Math.floor(Math.random() * 1e6)}`);
   await page.getByRole("button", { name: "Continue" }).click();
@@ -121,4 +134,24 @@ test("Notation Studio: downloads work and the result hands over to the Workspace
   await page.getByRole("region", { name: "Downloads" }).getByRole("link", { name: "Ask Orin about this loss report" }).click();
   await expect(page).toHaveURL(/\/chat/);
   await expect(page.getByLabel("Message Orin")).toBeVisible();
+});
+
+test("Home: explains the idea without signing in and leads into the app", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("One melody.");
+
+  // The one interaction: the same melody as performed, then as piano keys hold it.
+  await expect(page.getByText("This is the performance.")).toBeVisible();
+  await page.getByRole("button", { name: "On piano keys" }).click();
+  await expect(page.getByText("2 things did not make it onto the keys.")).toBeVisible();
+  await page.getByRole("button", { name: "Play this version" }).click();
+
+  // The traditions come from the server's registry and are marked as drafts.
+  await page.getByRole("button", { name: "Arabic Maqam" }).click();
+  await expect(page.getByText("Unreviewed draft").first()).toBeVisible();
+
+  // Into the app: the profile picker appears only now.
+  await page.getByRole("region", { name: "Ask, write, make" }).getByRole("link", { name: /Notation Studio/ }).click();
+  await expect(page).toHaveURL(/\/studio/);
+  await expect(page.getByLabel("Profile name")).toBeVisible();
 });

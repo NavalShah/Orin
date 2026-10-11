@@ -131,7 +131,7 @@ function Frame({ children }: { children: ReactNode }) {
           </button>
         </div>
         <Link href="/" className={css.backLink}>
-          Back to the original sketch
+          Home
         </Link>
       </div>
       <div className={css.content}>

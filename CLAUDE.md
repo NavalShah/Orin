@@ -6,7 +6,7 @@ Read [AGENTS.md](AGENTS.md) first. It has the layout, commands, and rules for th
 
 - Orin converts music between traditions through a neutral intermediate representation (IR) and reports what was lost. The spec is [requirements.txt](requirements.txt); its section numbers are used throughout the code.
 - Three layers: `orin/` (core library), `server/` (FastAPI), and the Next.js app under `app/(orin)/`.
-- `pipeline/` and `app/page.jsx` are the original prototype. Keep them working and don't restructure them unless asked.
+- `pipeline/` is the original prototype analysis. Keep it working and don't restructure it unless asked. The home page (`app/page.tsx`) keeps the original sketch's look.
 - Tradition data (Carnatic, Arabic, Persian) is unreviewed. Flag anything musically uncertain instead of guessing, and put the doubt in the data (`caveats`, `confidence`) so the UI shows it.
 
 ## Working style

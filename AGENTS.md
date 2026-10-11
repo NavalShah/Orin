@@ -10,7 +10,8 @@ Guidance for any AI agent working in this repo. Match existing style.
 | `orin/` | Core library: audio or notes -> IR -> per-tradition notation and a loss report |
 | `server/` | FastAPI backend, a thin layer over `orin/` |
 | `app/(orin)/`, `components/`, `lib/` | Next.js app: Chat, Notation Studio, Workspace (TypeScript) |
-| `app/page.jsx`, `app.js`, `index.html`, `styles.css` | The original piano-sketch page. Leave it alone unless asked |
+| `app/page.tsx`, `components/home/` | The public home page, in the look of the original Raga to Keys sketch |
+| `app.js`, `index.html`, `styles.css` | The first, pre-Next prototype of that sketch. Unused; leave it alone unless asked |
 | `pipeline/` | The original Western-baseline analysis (tempo, notes, key). `orin/` imports from it |
 | `tests/`, `e2e/` | pytest suite; Playwright smoke tests |
 | `docs/` | Architecture, IR, loss report, adding a format, practitioner review checklist |
