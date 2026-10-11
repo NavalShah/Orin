@@ -74,7 +74,7 @@ export function Home() {
               <em>Two ways to hear it.</em>
             </h1>
             <p className={css.lede}>
-              Orin writes music from one tradition to another. We empower cross-cultural collaboration, professional music production, and music appreciation.
+              Orin converts, transcribes, and generates music from one music tradition to another. We empower cross-cultural collaboration, professional music production, and music appreciation.
             </p>
             <div className={css.heroActions}>
               <Link href="/studio" className={css.primary}>
@@ -101,7 +101,7 @@ export function Home() {
           <div className={css.kicker}>
             TRY IT <span>·</span> NO SIGN-IN NEEDED
           </div>
-          <h2 id="orin-home-try">Flip the switch and watch what a piano keeps</h2>
+          <h2 id="orin-home-try">Converting Microtones to Western Staff Notation</h2>
           <HeroBridge />
         </section>
 
@@ -136,13 +136,12 @@ export function Home() {
               <div className={css.kicker}>THE LOSS REPORT</div>
               <h2 id="orin-home-loss">Every conversion says what it left out</h2>
               <p className={css.body}>
-                A staff has twelve pitches in an octave and no sign for a slow, wide oscillation. Sargam has no bar lines. When
-                Orin moves a melody between them it lists each thing that did not survive, note by note, and explains why in
-                plain words. It never rounds anything silently.
+                A staff has twelve pitches in an octave and no sign for a slow, wide oscillation. Other styles of music use different notation. When
+                Orin transcribes a melody, it makes sure to preserve the original intent of the melody, creating arrangements that facilitate multi-cultural collaboration.
               </p>
               <p className={css.body}>
                 Transcription is approximate by design and follows one melody line. Orin shows how sure it is, and you can
-                always set the tonic yourself.
+                always set the tonic, key, and tempo yourself.
               </p>
             </div>
             <div className={css.sample} role="group" aria-label="Example loss report">
