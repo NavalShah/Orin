@@ -16,34 +16,6 @@ Anything made in one part can be sent to the others.
 
 Supported formats: Western staff, Western pop, rock (staff and guitar tab), Carnatic (sargam), Arabic maqam (staff with half-flats) and Persian dastgah (staff with koron and sori). Any of them converts to any other through a neutral intermediate representation. The architecture is extensible; the list is not "everything".
 
-## Status and honest limits
-
-Built for a hackathon. As of 2026-10-10:
-
-**What has been checked**
-
-- 1,244 offline Python tests pass (`pytest tests/`), including all 36 format-to-format conversions.
-- 200 frontend unit and component tests pass, the production build succeeds, and 5 browser smoke tests cover the three screens, the downloads and the handoffs between screens.
-- The full flow runs with no API keys: chat request, spec card, generated stand-in clip, transcription, notation, loss report, explanation, Workspace, WAV export.
-- A 60-second synthesised clip transcribes in about 8 seconds on a laptop CPU, without stem separation.
-
-**What has not**
-
-- **No real recording has been tested.** Every audio test uses synthesised signals. Expect lower accuracy on real singing and playing. The harness for a real-recording test set exists (`orin/eval/`), but its manifest is empty.
-- **No live Gemini or ElevenLabs call has been made.** Those paths are tested against fakes only. Run `pytest -m live` once keys are in place, and check the model names in `.env.example` against the providers' current lists.
-- **The tradition tables are unreviewed drafts**, the Persian ones most of all. See "Musical honesty" below.
-- **Accessibility** was built in (keyboard operation, labels, live regions, text alternatives for every score) and exercised through role-based tests, but it has not been audited or tried with a screen reader.
-- **The CI workflow** has never run; it starts working when the branch is pushed.
-
-**Known limits**
-
-- One melody line only. Chords and harmony are not transcribed.
-- Style auto-detect often answers "Not sure - please choose", especially on clips under 10 seconds or music that mixes styles. It cannot separate Arabic from Persian, or classical from pop from rock, on a short single line.
-- A tala, iqa' or meter suggested from a melody alone is a guess. Choose it yourself when you know it.
-- Sign-in is a profile picker with no password. Anyone who types a name opens that profile. Do not put this on a public server as it is.
-- Music generation needs a paid ElevenLabs plan. Without one, generated tracks are synthesised stand-ins and are labelled as such.
-- Not built: the optional Basic Pitch cross-check, chord labels, chat memory beyond the current thread, and Workspace effects, time-stretch and pitch-shift.
-
 ## Setup
 
 You need Python 3.11, Node 22.12 or newer, and ffmpeg.
