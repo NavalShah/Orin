@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { newProject, type AudioClip, type MidiClip, type Project } from "../workspace/project";
 import { reduce, type Action } from "../workspace/reducer";
-import { asContext, FakeContext, fakeBuffer } from "../workspace/testing/fakeAudioContext";
+import { asContext, FakeContext, FakeParam, fakeBuffer } from "../workspace/testing/fakeAudioContext";
 import { buildGraph, clipGainAt, renderOffline, scheduleRange, syncGraph, Transport } from "./engine";
 
 const run = (p: Project, ...actions: Action[]) => actions.reduce(reduce, p);
@@ -353,7 +353,8 @@ describe("Transport", () => {
     p = reduce(p, { type: "setTrackGain", trackId: "a1", gain: 0.2 });
     transport.sync();
     expect(ctx.sourcesOf(buffer)).toHaveLength(1);
-    expect(transport.graph!.tracks.get("a1")!.gain.gain.events.at(-1)).toMatchObject({ type: "target", value: 0.2 });
+    const gainParam = transport.graph!.tracks.get("a1")!.gain.gain as unknown as FakeParam;
+    expect(gainParam.events.at(-1)).toMatchObject({ type: "target", value: 0.2 });
 
     p = reduce(p, { type: "moveClip", clipId: "c1", startSec: 0.5 });
     transport.sync(true); // mid-drag: wait
