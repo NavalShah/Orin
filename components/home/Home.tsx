@@ -74,8 +74,7 @@ export function Home() {
               <em>Two ways to hear it.</em>
             </h1>
             <p className={css.lede}>
-              Orin writes music from one tradition in the notation of another, then shows you exactly what the new notation
-              could not carry. The gap is where the learning is.
+              Orin writes music from one tradition to another. We empower cross-cultural collaboration, professional music production, and music appreciation.
             </p>
             <div className={css.heroActions}>
               <Link href="/studio" className={css.primary}>
