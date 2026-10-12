@@ -82,7 +82,7 @@ export function RegistryProvider({ children, value }: { children: ReactNode; val
             </p>
           </div>
         ) : (
-          <p role="status">Connecting to the Orin server...</p>
+          <p role="status">Connecting to the server... Orin's render backend is a bit slow on the free tier! Feel free to get in touch at navalmaulikshah@gmail.com for more details!</p>
         )}
       </div>
     );
